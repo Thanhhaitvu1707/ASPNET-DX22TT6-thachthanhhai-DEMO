@@ -1,2 +1,24 @@
 # ASPNET-DX22TT6-thachthanhhai-DEMO
-Đồ án chuyên đề ASP.NET - Xây dựng website giới thiệu các lễ hội của người dân tộc KhmerMục tiêu: Xây dựng trang web cung cấp thông tin về các lễ hội Khmer Công nghệ: ASP.NET Web Forms, SQL Server, AJAX, Bootstrap
+
+## 🌟 Giới thiệu  
+- Đây là đồ án chuyên đề về ASP.NET, xây dựng trang web giới thiệu lễ hội của dân tộc Khmer.  
+- **Sinh viên thực hiện:** Thạch Thanh Hải 
+- **Mã lớp:** DX22TT6
+- **Giảng viên hướng dẫn:** ThS. Đoàn Phước Miền
+
+## 🎯 Mục tiêu của đồ án  
+- Cung cấp thông tin về các lễ hội Khmer.  
+- Xây dựng trang web với ASP.NET Web Forms.  
+- Hiển thị hình ảnh, video về các lễ hội.  
+- Quản lý dữ liệu bằng SQL Server.  
+
+## 🛠️ Công nghệ sử dụng  
+- **Ngôn ngữ:** C#  
+- **Framework:** ASP.NET Web Forms  
+- **Cơ sở dữ liệu:** SQL Server  
+- **Giao diện:** Bootstrap  
+- **Tương tác động:** AJAX  
+
+## 📌 Liên hệ  
+- **Email:** haitt170702@tvu-onschool.edu.vn
+- **SĐT:** 0336577064  

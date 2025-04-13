@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Festivals" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Festivals.aspx.cs" Inherits="KhmerFestivalWeb.Pages.Festivals" %>
+<%@ Page Title="Festivals" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Festivals.aspx.cs" Inherits="KhmerFestivalWeb.Pages.Festivals" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Danh Sách Lễ Hội</h2>

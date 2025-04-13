@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +12,18 @@ namespace KhmerFestivalWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Username"] != null)
+            {
+                phGuestLinks.Visible = false;
+                phUserLinks.Visible = true;
+                ltUsername.Text = Session["Username"].ToString();
+            }
+            else
+            {
+                phGuestLinks.Visible = true;
+                phUserLinks.Visible = false;
+            }
+          
         }
     }
 }

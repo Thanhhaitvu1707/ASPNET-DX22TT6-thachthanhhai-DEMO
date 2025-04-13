@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
@@ -17,18 +17,20 @@ namespace KhmerFestivalWeb.Pages
             txtUsername.Attributes.Add("required", "required");
             txtPassword.Attributes.Add("required", "required");
         }
+
         private string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
             {
                 byte[] bytes = Encoding.UTF8.GetBytes(password);
                 byte[] hashBytes = sha256.ComputeHash(bytes);
-                return Convert.ToBase64String(hashBytes); 
+                return Convert.ToBase64String(hashBytes);
             }
         }
 
+      
 
-        protected void btnLogin_Click(object sender, EventArgs e)
+        protected void BtnLogin_Click(object sender, EventArgs e)
         {
             string hashedPassword = HashPassword(txtPassword.Text); // Hash mật khẩu nhập vào
 
@@ -37,39 +39,47 @@ namespace KhmerFestivalWeb.Pages
                 conn.Open();
 
                 // Kiểm tra trong bảng Users trước
-                string userQuery = "SELECT UserID FROM Users WHERE Username = @Username AND PasswordHash = @Password";
+                string userQuery = "SELECT UserID, Username FROM Users WHERE Username = @Username AND PasswordHash = @Password";
                 using (SqlCommand cmd = new SqlCommand(userQuery, conn))
                 {
                     cmd.Parameters.AddWithValue("@Username", txtUsername.Text);
                     cmd.Parameters.AddWithValue("@Password", hashedPassword);
 
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read()) // Nếu tìm thấy user
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        Session["UserID"] = reader["UserID"].ToString();
-                        Session["Role"] = "User";
-                        Response.Redirect("Default.aspx");
-                        return;
+                        if (reader.Read()) // Nếu tìm thấy user
+                        {
+                            Session["UserID"] = reader["UserID"].ToString();
+                            Session["Username"] = reader["Username"].ToString(); // Lưu Username vào Session
+                            Session["Role"] = "User";
+                            reader.Close();
+                            Response.Redirect("/Default.aspx");
+                            return;
+                        }
                     }
-                    reader.Close();
                 }
 
                 // Kiểm tra trong bảng Admins
-                string adminQuery = "SELECT AdminID FROM Admins WHERE Username = @Username AND PasswordHash = @Password";
+                string adminQuery = "SELECT AdminID, Username FROM Admins WHERE Username = @Username AND PasswordHash = @Password";
                 using (SqlCommand cmd = new SqlCommand(adminQuery, conn))
                 {
                     cmd.Parameters.AddWithValue("@Username", txtUsername.Text);
                     cmd.Parameters.AddWithValue("@Password", hashedPassword);
 
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read()) // Nếu tìm thấy admin
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        Session["AdminID"] = reader["AdminID"].ToString();
-                        Session["Role"] = "Admin";
-                        Response.Redirect("Admin/AdminDashboard.aspx");
-                        return;
+                        if (reader.Read()) // Nếu tìm thấy admin
+                        {
+                            Session["AdminID"] = reader["AdminID"].ToString();
+                            Session["Username"] = reader["Username"].ToString(); // Lưu Username vào Session
+                            Session["Role"] = "Admin";
+                            reader.Close();
+                            Response.Redirect("~/Admin/AdminDashboard.aspx");
+                            return;
+                        }
                     }
                 }
+
 
                 // Nếu không tìm thấy trong cả hai bảng, báo lỗi
                 lblMessage.Text = "<span style='color: red;'>Tên đăng nhập hoặc mật khẩu không đúng!</span>";

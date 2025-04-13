@@ -1,17 +1,17 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="KhmerFestivalWeb.Pages.Contact" %>
+<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="KhmerFestivalWeb.Pages.Contact" %>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
     <link rel="stylesheet" type="text/css" href="Content/contact.css">
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Contact Us</h2>
-    <p>If you have any questions, feel free to reach out to us!</p>
+    <h2>Liên hệ chúng tôi</h2>
+    <p>Nếu các bạn có thắc mắc, đừng ngần ngại, hãy liên hệ với chúng tôi!</p>
 
     <div class="row">
         <div class="col-md-6">
             <h4>Contact Information</h4>
             <p><strong>Email:</strong> support@khmerfestival.com</p>
-            <p><strong>Phone:</strong> +855 1234 5678</p>
+            <p><strong>Phone:</strong> +84336577064</p>
             <p><strong>Address:</strong> Phnom Penh, Cambodia</p>
         </div>
 

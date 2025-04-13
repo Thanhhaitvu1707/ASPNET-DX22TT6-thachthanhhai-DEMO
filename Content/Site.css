@@ -1,57 +1,52 @@
-﻿/* === Layout tổng thể === */
 .body-content {
-    margin-top: 20px;
-    padding: 20px;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    padding-top: 80px;
 }
+.footer {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    }
 
-/* === Navbar === */
-.navbar {
-    background-color: #343a40 !important; /* Màu tối sang trọng */
-    padding: 10px 20px;
-}
-
-.navbar-brand {
-    font-size: 20px;
+.nav-link.active {
+    color: #ffcc00 !important;
     font-weight: bold;
-    color: #ffffff !important;
+    border-bottom: 2px solid #ffcc00;
 }
 
 .navbar-nav .nav-link {
-    color: #ffffff !important;
-    font-size: 16px;
-    padding: 10px 15px;
-    transition: 0.3s;
+    color: white; /* Chữ trắng */
+    font-weight: bold; /* In đậm */
 }
 
-    .navbar-nav .nav-link:hover {
-        background-color: #007bff;
-        color: #ffffff !important;
-        border-radius: 5px;
+/* Hiệu ứng mờ dần khi tải trang */
+.fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
-/* === Footer === */
-footer {
-    background: #343a40;
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    margin-top: 30px;
-    font-size: 14px;
-}
-
-/* === Căn chỉnh nội dung chính === */
-.body-content {
-    min-height: 80vh;
-    padding: 30px;
-}
-
-/* === Responsive: Màn hình nhỏ === */
-@media screen and (max-width: 768px) {
-    .navbar-nav {
-        text-align: center;
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-        .navbar-nav .nav-item {
-            margin-bottom: 10px;
-        }
 }
+
+.navbar {
+    position: fixed; /* Cố định menu */
+    top: 0; /* Gắn lên trên cùng */
+    left: 0;
+    width: 100vw; /* Chiều rộng full màn hình */
+    background-color: #ff6600; /* Màu cam */
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ */
+    z-index: 1000; /* Đảm bảo trên cùng */
+}
+

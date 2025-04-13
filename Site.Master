@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="KhmerFestivalWeb.SiteMaster" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="KhmerFestivalWeb.SiteMaster" %>
 
 <!DOCTYPE html>
 
@@ -15,6 +15,9 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Merriweather:wght@400&display=swap" rel="stylesheet">
+
+   
 </head>
 
 <body>
@@ -29,38 +32,72 @@
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">Khmer Festival</a>
+                <a class="navbar-brand fw-bold text-light fs-3" href="Default.aspx"> Khmer Festival </a>
+
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Festivals.aspx">Festivals</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/TourBooking.aspx">Tour Booking</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact.aspx">Contact</a></li>
-                    </ul>
-
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Login.aspx">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Register.aspx">Register</a></li>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav" id="navMenu">
+                        <li class="nav-item">
+                            <a id="lnkHome" class="nav-link text-uppercase px-3" href="/Default.aspx">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="lnkFestivals" class="nav-link text-uppercase px-3" href="/Pages/Festivals.aspx">Festivals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="lnkTourBooking" class="nav-link text-uppercase px-3" href="/Pages/TourBooking.aspx">Tour Booking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="lnkBookingHistory" class="nav-link text-uppercase px-3" href="/Pages/BookingHistory.aspx">Booking History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="lnkContact" class="nav-link text-uppercase px-3" href="/Pages/Contact.aspx">Contact</a>
+                        </li>
                     </ul>
                 </div>
-            </div>
+
+                <asp:PlaceHolder ID="phGuestLinks" runat="server">
+                    <a href="/Pages/Login.aspx" class="btn btn-outline-light btn-sm">
+                        <i class="fa fa-user"></i> Login  
+                    </a> 
+                    <span class="text-white mx-2">│</span> 
+                    <a href="/Pages/Register.aspx" class="btn btn-outline-warning btn-sm">
+                        <i class="fa fa-user-plus"></i> Register
+                    </a>
+                </asp:PlaceHolder>
+
+                <asp:PlaceHolder ID="phUserLinks" runat="server" Visible="false">
+                    <span class="text-white fw-bold">
+                        <i class="fa fa-user"></i> 👤 <asp:Literal ID="ltUsername" runat="server"></asp:Literal>
+                    </span> 
+                    <span class="text-white mx-2">│</span> 
+                    <a href="/Pages/Logout.aspx" class="btn btn-danger btn-sm">Logout</a>
+                </asp:PlaceHolder>
+           </div>
         </nav>
 
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Khmer Festival</p>
-            </footer>
+
+           <footer class="bg-dark text-white text-center py-3 mt-5 footer">
+                <div class="container">
+                    <p class="mb-0">© 2025 - Khmer Festival. All Rights Reserved.</p>
+                    <small>Designed with ❤️ by Khmer Dev Team</small>
+                </div>
+           </footer>
         </div>
     </form>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
+
+    <!-- ✅ JavaScript đánh dấu menu đang chọn -->
+    <script src="/Scripts/active-menu.js">
+   
+</script>
 </body>
 </html>
+

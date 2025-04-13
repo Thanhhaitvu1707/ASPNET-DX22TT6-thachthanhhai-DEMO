@@ -1,7 +1,8 @@
-﻿<%@ Page Title="Quản lý User" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Admin_Users.aspx.cs" Inherits="KhmerFestivalWeb.Admin.Admin_Users" %>
+<%@ Page Title="Quản lý User" MasterPageFile="~/Admin/Admin.Master" Language="C#" AutoEventWireup="true" CodeBehind="Admin_Users.aspx.cs" Inherits="KhmerFestivalWeb.Admin.Admin_Users" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <form id="form1" runat="server">
     <h2>Quản lý User</h2>
 
     <asp:GridView ID="gvUsers" runat="server" CssClass="table table-bordered" 
@@ -31,4 +32,5 @@
         <asp:ListItem Text="Admin" Value="Admin"></asp:ListItem>
     </asp:DropDownList>
     <asp:Button ID="btnAddUser" runat="server" Text="Thêm User" OnClick="btnAddUser_Click" />
+        </form>
 </asp:Content>

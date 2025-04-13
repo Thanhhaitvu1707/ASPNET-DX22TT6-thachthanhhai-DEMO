@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using WebGrease.Activities;
@@ -24,11 +24,10 @@ namespace KhmerFestivalWeb.Pages
                 return;
             }
 
-
             string connStr = ConfigurationManager.ConnectionStrings["KhmerFestivalDB"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-                string query = "SELECT FestivalName, Description, Location, Date, ImagePath FROM Festivals WHERE FestivalID = @FestivalID";
+                string query = "SELECT FestivalName, Description, Location, Date, ImagePath, Content FROM Festivals WHERE FestivalID = @FestivalID";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@FestivalID", festivalId);
 
@@ -40,7 +39,12 @@ namespace KhmerFestivalWeb.Pages
                     lblLocation.Text = reader["Location"].ToString();
                     lblDate.Text = Convert.ToDateTime(reader["Date"]).ToString("dd/MM/yyyy");
                     lblDescription.Text = reader["Description"].ToString();
-                    imgFestival.ImageUrl = reader["ImagePath"].ToString();
+                    imgFestival.ImageUrl = ResolveUrl("~/") + reader["ImagePath"].ToString().TrimStart('/');
+
+
+
+                    // ✅ Gán nội dung bài viết
+                    litContent.Text = reader["Content"].ToString();
                 }
                 else
                 {
